@@ -8,11 +8,11 @@
 <body>
    <h1>Details of {{ book.title }}</h1>
    <ul>
-      <li>{{ book.author }}</li>
-      <li>{{ book.rating }}</li>
-      <li>{{ book.sinopsis }}</li>
-      <li>{{ book.created_at }}</li>
-      <li>{{ book.updated_at }}</li>
+      <li><b>Author:</b> {{ book.author }}</li>
+      <li><b>Rating:</b> {{ book.rating }} Stars</li>
+      <li><b>Sinopsis:</b> {{ book.sinopsis }}</li>
+      <li><b>Created:</b> {{ book.created_at }}</li>
+      <li><b>Last updated:</b> {{ book.updated_at }}</li>
    </ul>
    <a href="{% url 'book_edit' pk=book.pk %}">Edit</a>
    <br>

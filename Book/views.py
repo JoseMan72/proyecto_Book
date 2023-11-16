@@ -30,6 +30,7 @@ class BookEditView(View):
    def get(self, request, pk):
       book = Book.objects.get(id=pk)
       form = BookForm(instance=book)
+      # Actualiza update_at
       return render(request, 'Book/edit.html', {'form': form, 'book': book})
    
    def post(self, request, pk):
