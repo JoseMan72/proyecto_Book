@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Details {{ book.pk }}</title>
+</head>
+<body>
+   <h1>Details of {{ book.title }}</h1>
+   <ul>
+      <li>{{ book.author }}</li>
+      <li>{{ book.rating }}</li>
+      <li>{{ book.sinopsis }}</li>
+      <li>{{ book.created_at }}</li>
+      <li>{{ book.updated_at }}</li>
+   </ul>
+   <a href="{% url 'book_edit' pk=book.pk %}">Edit</a>
+   <br>
+   <br>
+   <a href="{% url 'book_list' %}">Back to list</a>
+</body>
