@@ -10,12 +10,12 @@
    <ul>
       {% for book in books %}
       <li>
-         <a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a>
+         <a href="{% url 'book_details' pk=book.pk %}">{{ book.title }}</a>
       </li>
       {% empty %}
       <li>No hay libros</li>
       {% endfor %}
    </ul>
-   <a href="{% url 'book_create' %}">Create new book</a>
+   <a href="{% url 'book_create' %}"  role="button">Create new book</a>
 </body>
 </html>
