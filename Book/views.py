@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import ListView, DetailView
 from .models import Book
 from .forms import BookForm
 
 # Create your views here.
+'''
 class BookListView(View):
    def get(self, request):
       books = Book.objects.all()
@@ -13,6 +15,13 @@ class BookDetailView(View):
    def get(self, request, pk):
       book = Book.objects.get(id=pk)
       return render(request, 'Book/details.html', {'book': book})
+'''
+
+class BookListView(ListView):
+   model = Book
+
+class BookDetailView(DetailView):
+   model = Book
 
 class BookCreateView(View):
    def get(self, request):
