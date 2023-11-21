@@ -1,5 +1,6 @@
 {% extends 'Book/base.html' %} {% block content %}
 <h1>Edit {{ book.title }}</h1>
+<!-- No hace falta rellenar el action -->
 <form action="{% url 'book_edit' pk=book.pk %}" method="POST">
 	{% csrf_token %} {{ form.as_p }}
 	<input type="submit" value="Update">

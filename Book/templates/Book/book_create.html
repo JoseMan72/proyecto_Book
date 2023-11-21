@@ -1,7 +1,14 @@
-{% extends 'Book/base.html' %} {% block content %}
+{% extends 'Book/base.html' %} 
+
+{% block content %}
 <h1>Create new book</h1>
 <form action="{% url 'book_create' %}" method="POST">
-	{% csrf_token %} {{ form.as_p }}
+	{% csrf_token %}
+	{{ form.management_form }}
+
+	{% for form in forms %}
+		{{ form.as_p }}
+	{% endfor %}
 	<button type="submit">Create</button>
 </form>
 <br />

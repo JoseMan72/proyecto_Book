@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.forms import formset_factory
 from django.views import View
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Book
 from .forms import BookForm
@@ -40,15 +41,22 @@ class BookListView(ListView):
 
 class BookCreateView(View):
    def get(self, request):
-      form = BookForm()
-      return render(request, 'Book/book_create.html', {'form': form})
+      return render(request, 'Book/book_create.html',
+                     context={'forms': formset_factory(BookForm, extra=2)})
    
    def post(self, request):
-      form = BookForm(request.POST)
-      if form.is_valid():
-         form.save()
-         return redirect('book_list')
-      return render(request, 'Book/book_create.html', {'form': form})
+      formset = formset_factory(BookForm)
+      formset = formset(data=request.POST)
+
+      if formset.is_valid():
+         for form in formset:
+            if form.has_changed():
+               form.save()
+         return redirect(to='book_list')
+      
+      else:
+         return render(request, 'Book/book_create.html', 
+                        context={'forms': formset})
 
 class BookDetailView(DetailView):
    model = Book

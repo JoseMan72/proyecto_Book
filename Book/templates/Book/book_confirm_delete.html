@@ -1,5 +1,6 @@
 {% extends 'Book/base.html' %} {% block content %}
 <h1>Delete {{ book.title }}</h1>
+<!-- No hace falta rellenar el action -->
 <form action="{% url 'book_delete' pk=book.pk %}" method="post">
     {% csrf_token %}
     <p>Are you sure you want to delete "{{ object }}"?</p>
