@@ -8,6 +8,7 @@
 	<li><b>Last updated:</b> {{ book.updated_at }}</li>
 </ul>
 <a href="{% url 'book_edit' pk=book.pk %}" role="button">Edit</a>
+<a href="{% url 'book_delete' pk=book.pk %}" role="button">Delete</a>
 <br />
 <br />
 <a href="{% url 'book_list' %}" role="button">Back to list</a>

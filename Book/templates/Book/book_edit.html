@@ -2,7 +2,7 @@
 <h1>Edit {{ book.title }}</h1>
 <form action="{% url 'book_edit' pk=book.pk %}" method="POST">
 	{% csrf_token %} {{ form.as_p }}
-	<button type="submit">Save</button>
+	<input type="submit" value="Update">
 </form>
 <br />
 <a href="{% url 'book_list' %}" role="button">Back to list</a>
